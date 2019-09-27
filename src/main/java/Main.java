@@ -2,8 +2,9 @@
  * Created by GaPhil on 2019-09-27.
  */
 
-import com.google.cloud.language.v1.*;
-import com.google.cloud.language.v1.Document.Type;
+import com.google.cloud.language.v1.AnalyzeEntitiesResponse;
+import com.google.cloud.language.v1.Entity;
+import nlp.TextProcessor;
 import skill.Skill;
 import skill.SkillsService;
 
@@ -22,19 +23,8 @@ public class Main {
             SkillsService skillsService = new SkillsService();
             List<Skill> skills = skillsService.loadSkills();
             
-            Document doc = Document.newBuilder()
-                    .setContent(text)
-                    .setType(Type.PLAIN_TEXT)
-                    .build();
-
-            LanguageServiceClient language = LanguageServiceClient.create();
-
-            AnalyzeEntitiesRequest request = AnalyzeEntitiesRequest.newBuilder()
-                    .setDocument(doc)
-                    .setEncodingType(EncodingType.UTF16)
-                    .build();
-
-            AnalyzeEntitiesResponse response = language.analyzeEntities(request);
+            TextProcessor textProcessor = new TextProcessor();
+            AnalyzeEntitiesResponse response = textProcessor.processEntities(text);
 
             Set<String> entities = new HashSet<String>();
 
