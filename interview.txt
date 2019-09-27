@@ -1,0 +1,13 @@
+Interviewer: Do you have experience with web programming
+Candidate: What do you mean, specifically? Like, HTML?
+Interviewer: We are using Angular 2, primarily.
+Candidate: Yeah, I am familiar with that.
+Interviewer: Great. When was the last time you used that?
+Candidate: I am using it currently. I am a senior developer in a project that is building
+an app build on AngularJS, node, mongo. I am pretty profficient with those things.
+Interviewer: How about databases?
+Candidate: I've mentioned mongo. MongoDB. I am using it on my current project.
+Interviewer: And how about relational ones?
+Candidate: MySQL and Postgres. And a bit of Oracle.
+Interviewer: How many years of experience do you have?
+Candidate: 4 years with Mongo. 10 years with MySQL and Postgres. I haven't used Oracle in a while.

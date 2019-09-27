@@ -22,7 +22,7 @@ public class Main {
 
             // Detects the sentiment of the text
             Sentiment sentiment = language.analyzeSentiment(doc).getDocumentSentiment();
-            String content = new String(Files.readAllBytes(Paths.get("pom.xml")));
+            String content = new String(Files.readAllBytes(Paths.get("interview.txt")));
             System.out.println(content);
             System.out.printf("Text: %s%n", text);
             System.out.printf("Sentiment: %s, %s%n", sentiment.getScore(), sentiment.getMagnitude());
