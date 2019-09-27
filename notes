@@ -1,0 +1,5 @@
+* entities - nouns etc
+* sentiment - emotional shit - gives score on this [-1,1]
+* analysing syntax - not really sure what this shit is
+* entity sentiment - combines the two of the above - perfect for our project
+* https://cloud.google.com/natural-language/docs/basics?refresh=1
