@@ -1,0 +1,139 @@
+Amazon AWS
+Android
+AngularJS
+Azure
+Backend development
+BigQuery
+C
+C#
+C++
+Calabash
+Cassandra
+CircleCI
+Client communication
+Client research
+Cloudinary
+CocoaPods
+Cocos2Dx
+Continuous integration
+Core Data
+Crashlytics
+CSS
+Dagger
+Dart
+DevOps
+Django
+Docker
+DynamoDB
+Elasticsearch
+Elixir
+EmberJS
+Erlang
+Express
+Ext JS
+Fastlane
+Firebase
+Flask
+Flutter
+Flux
+Fortran
+Git
+Go
+Google analytics
+Google Cloud Platform GCP
+Google Maps API
+Gradle
+Grafana
+Hadoop
+Haskell
+Heroku
+Hibernate
+HLS streams
+HTML
+Infrastructure
+Integration Testing
+Interface Builder
+iOS
+Istio
+Jackson
+Java
+JavaScript
+Jenkins
+Jest
+Jira
+jQuery
+JUnit
+Kafka
+Kibana
+Koa
+Kotlin
+Kubernetes
+Laravel
+LDAP
+Logstash
+MariaDB
+Marketing
+Martini
+Mason
+Memcache
+Mocha
+MongoDB
+MVP
+MVVM
+MySQL
+.NET
+Node.js
+Objective C
+OkHttp
+OpenStreetMap
+Parse
+PDF Library
+Perl
+Phoenix
+PHP
+PHPUnit
+Picasso
+PostgreSQL
+Project management
+Prolog
+Prometheus
+Pytest
+Python
+Qlik
+ReactiveCocoa
+ReactiveX
+ReactJS
+React Native
+Redis
+Redux
+RestKit
+Retrofit
+Ruby
+Ruby on Rails
+Rust
+Scala
+Selenium
+Spotify apps SDK
+Spring
+Spring Boot
+SQLite
+Swift
+Swift 2
+Swift 3
+Symfony
+SysAdmin
+TeamCity
+TravisCI
+TypeScript
+UI design
+Unit testing
+Unity
+UX design
+VFR/Reader
+Visual design
+Vue.js
+Vuex
+WebSockets
+WordPress
+Xamarin
+Xcode
