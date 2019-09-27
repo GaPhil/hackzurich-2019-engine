@@ -4,17 +4,24 @@
 
 import com.google.cloud.language.v1.*;
 import com.google.cloud.language.v1.Document.Type;
+import skill.Skill;
+import skill.SkillsService;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Main {
-    public static void main(String... args) throws Exception {
+    public static void main(String[] args) throws Exception {
         // Instantiates a client
         try {
             String text = new String(Files.readAllBytes(Paths.get("interview.txt")));
 
+            SkillsService skillsService = new SkillsService();
+            List<Skill> skills = skillsService.loadSkills();
+            
             Document doc = Document.newBuilder()
                     .setContent(text)
                     .setType(Type.PLAIN_TEXT)
@@ -29,19 +36,19 @@ public class Main {
 
             AnalyzeEntitiesResponse response = language.analyzeEntities(request);
 
+            Set<String> entities = new HashSet<String>();
+
             // Print the response
             for (Entity entity : response.getEntitiesList()) {
-                System.out.printf("Entity: %s\n", entity.getName());
-                System.out.printf("Salience: %.3f\n", entity.getSalience());
-                System.out.println("Metadata: ");
-                for (Map.Entry<String, String> entry : entity.getMetadataMap().entrySet()) {
-                    System.out.printf("%s : %s", entry.getKey(), entry.getValue());
+                for (Skill skill : skills) {
+                    if (entity.getName().toLowerCase().contains(skill.getValue().toLowerCase())) {
+                        entities.add(entity.getName().toLowerCase());
+                    }
                 }
-                for (EntityMention mention : entity.getMentionsList()) {
-                    System.out.printf("Begin offset: %d\n", mention.getText().getBeginOffset());
-                    System.out.printf("Content: %s\n", mention.getText().getContent());
-                    System.out.printf("Type: %s\n\n", mention.getType());
-                }
+            }
+
+            for (String ent : entities) {
+                System.out.println("This is what we found: " + ent);
             }
         } catch (Exception exception) {
             System.out.print(exception);

@@ -10,6 +10,7 @@ public class SkillsService {
 
     /**
      * Load all skills from txt file.
+     *
      * @return List<Skill>
      */
     public List<Skill> loadSkills() {
@@ -18,7 +19,7 @@ public class SkillsService {
 
         try {
             // load file
-            reader = new BufferedReader(new FileReader("src/main/java/skill/skills.txt"));
+            reader = new BufferedReader(new FileReader("src/main/resources/skills.txt"));
 
             // create a Skill for each line
             String value = reader.readLine();
@@ -26,7 +27,6 @@ public class SkillsService {
                 skills.add(new Skill(value.trim()));
                 value = reader.readLine();
             }
-
             // cleanup
             reader.close();
         } catch (IOException e) {
