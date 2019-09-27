@@ -30,7 +30,7 @@ public class Main {
             System.out.printf("Text: %s%n", text);
             System.out.printf("Sentiment: %s, %s%n", sentiment.getScore(), sentiment.getMagnitude());
         } catch (Exception exception) {
-            System.out.print("shit happens");
+            System.out.print(exception);
         }
     }
 }
