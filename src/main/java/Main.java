@@ -13,12 +13,16 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
-import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class Main {
+
+    private final static Logger LOG = Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args) throws Exception {
-        get("/hello", (req, res) -> "Hello World");
+        post("/api/analyze", (request, response) -> new Skill("Hello World"), new JsonTransformer());
 //
 //
 //        try {
