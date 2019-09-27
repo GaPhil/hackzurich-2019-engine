@@ -1,18 +1,14 @@
-///**
-// * Created by GaPhil on 2019-09-27.
-// */
-//public class Main {
-//
-//    public static void main(String[] args) {
-//        System.out.println("Hello World!");
-//    }
-//}
-// Imports the Google Cloud client library
+/**
+ * Created by GaPhil on 2019-09-27.
+ */
 
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.Document.Type;
 import com.google.cloud.language.v1.LanguageServiceClient;
 import com.google.cloud.language.v1.Sentiment;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String... args) throws Exception {
@@ -26,7 +22,8 @@ public class Main {
 
             // Detects the sentiment of the text
             Sentiment sentiment = language.analyzeSentiment(doc).getDocumentSentiment();
-
+            String content = new String(Files.readAllBytes(Paths.get("pom.xml")));
+            System.out.println(content);
             System.out.printf("Text: %s%n", text);
             System.out.printf("Sentiment: %s, %s%n", sentiment.getScore(), sentiment.getMagnitude());
         } catch (Exception exception) {
