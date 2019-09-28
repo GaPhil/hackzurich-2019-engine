@@ -32,6 +32,7 @@ public class TestRunner {
 
             // create set with skills tokens
             Set<Token> skillTokens = new HashSet<>();
+            Token potentialToken = null;
             for (ExtendedSentence sentence : ext) {
                 String sent = sentence.getSentence();
                 String party = sentence.getParty().toString();
@@ -40,24 +41,25 @@ public class TestRunner {
 
                 AnnotateTextResponse annotatedSentence = textProcessor.processAll(sentence.getSentence());
 
+                if (potentialToken != null && annotatedSentence.getDocumentSentiment().getScore() >= 0) {
+                    System.out.println("this was a positive confirmation ---> " + potentialToken);
+                    potentialToken = null;
+                }
+
                 Token mostRecentlyAdded = null;
-                boolean doAddNextToken = true;
                 for (Token token : annotatedSentence.getTokensList()) {
 
-                    if (token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
-                        System.out.println("will not add token: " + token); // TODO should not add token
-                        doAddNextToken = false;
-                    }
 
                     for (Skill skill : skills) {
                         int score = FuzzySearch.ratio(token.getText().getContent().toLowerCase(), skill.getName().toLowerCase());
                         if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase()) || score > 90) {
-                            skillTokens.add(token);
+                            if (!sentence.isQuestion()) {
+                                skillTokens.add(token);
+                                mostRecentlyAdded = token;
+                            } else {
+                                potentialToken = token;
+                            }
                         }
-                    }
-
-                    if (doAddNextToken && token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
-                        System.out.println("will remove token: " + mostRecentlyAdded); // TODO we should remove token
                     }
                 }
 
