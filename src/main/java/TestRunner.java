@@ -1,5 +1,4 @@
-import com.google.cloud.language.v1.AnalyzeSyntaxResponse;
-import com.google.cloud.language.v1.Sentence;
+import com.google.cloud.language.v1.*;
 import nlp.ExtendedSentence;
 import nlp.Party;
 import nlp.TextProcessor;
@@ -33,15 +32,17 @@ public class TestRunner {
                 String sent = sentence.getSentence().getText().getContent();
                 String party = sentence.getParty().toString();
                 Boolean isQuestion = sentence.isQuestion();
-                Set<String> entities = new HashSet<>();
-                for (Skill skill : skills) {
-                    if (sentence.getSentence().getText().getContent().toLowerCase().contains(skill.getName().toLowerCase())) {
-                        entities.add(skill.getName().toLowerCase());
-                        System.out.println("Found this shit: " + skill.getName());
+                System.out.println(sent + " " + party + " QUEST: " + isQuestion);
+
+                AnnotateTextResponse foo = textProcessor.processAll(sentence.getSentence().getText().getContent());
+
+                for (Token token : foo.getTokensList()) {
+                    for (Skill skill : skills) {
+                        if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase())) {
+                            System.out.println(token);
+                        }
                     }
                 }
-
-                System.out.println(sent + " " + party + " QUEST: " + isQuestion);
 
                 System.out.println("---------------------------------------------------------------------------");
             }

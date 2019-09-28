@@ -24,7 +24,10 @@ public class TextProcessor {
                     .setEncodingType(EncodingType.UTF16)
                     .build();
 
-            return language.analyzeEntities(request);
+            AnalyzeEntitiesResponse result = language.analyzeEntities(request);
+            language.shutdownNow();
+
+            return result;
         } catch (IOException e) {
             LOG.warning(e.getMessage());
             return null;
@@ -45,7 +48,10 @@ public class TextProcessor {
                     .setEncodingType(EncodingType.UTF16)
                     .build();
 
-            return language.analyzeSyntax(request);
+            AnalyzeSyntaxResponse result = language.analyzeSyntax(request);
+            language.shutdownNow();
+
+            return result;
         } catch (IOException e) {
             LOG.warning(e.getMessage());
             return null;
@@ -62,11 +68,15 @@ public class TextProcessor {
             LanguageServiceClient language = LanguageServiceClient.create();
 
             AnnotateTextRequest request = AnnotateTextRequest.newBuilder()
+                    .setFeatures(AnnotateTextRequest.Features.newBuilder().setExtractEntities(true).setExtractSyntax(true).build())
                     .setDocument(doc)
                     .setEncodingType(EncodingType.UTF16)
                     .build();
 
-            return language.annotateText(request);
+            AnnotateTextResponse result = language.annotateText(request);
+            language.shutdownNow();
+
+            return result;
         } catch (IOException e) {
             LOG.warning(e.getMessage());
             return null;

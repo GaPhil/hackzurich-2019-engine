@@ -82,9 +82,12 @@ MVVM
 MySQL
 .NET
 Node.js
+Node
+NodeJS
 Objective C
 OkHttp
 OpenStreetMap
+Oracle
 Parse
 PDF Library
 Perl
@@ -93,6 +96,7 @@ PHP
 PHPUnit
 Picasso
 PostgreSQL
+Postgre
 Project management
 Prolog
 Prometheus
