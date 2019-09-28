@@ -1,0 +1,26 @@
+- Okay, thanks for that, very good to know. how about other frameworks?
+- I used dialogflow. it's google's nlp engine. i was lead dev for a project that built a chatbot on top of it. 
+- When was that?
+- That's recent. that's my current job. 
+- What's your role on the team?
+- I am lead dev for the integration between dialogflow and our own backend. The chatbot answers 
+both generic and specific questions. You can ask it when the installation team will come to connect
+your wifi, and the thing checks your current case, your address, and so on. There is integration in place
+to facilitate that. That was my main role. To design that. 
+- Thats very relevant. We use Lex, not Dialogflow, but I think when it comes to integration work your 
+experience will be very relevant. Do you happen to have any exprience with Lex?
+- To be honest not really. Someone else did the comparison and they decided we will go with dialogflow,
+and I sort of didn't get involved in Lex evaluation. I know Lex exists, thats about it. I'd not say 
+I am not interested to learn, but haven't any practical experience yet. 
+- And on your chatbot, did you also help train the NLP parser and design the flow of the conversations?
+- Yeah, about that, that wasn't really my role. I was building APIs Dialogflow would use to retrieve
+information, but other people set up training phrases and trained the engine to recognize what people say. 
+- Was your role strictly limited to this?
+- No, I was also involved in end to end testing. I also developed the CICD pipeline for the team. 
+- What did you use for that?
+- Most of our work is hosted in gcp, we used kubernetes, and a bit of cloud functions, 
+- ...and for ci/cd specifically?
+- cloud build for some, we also used spinnaker and gke 
+- ...
+- google kubernetes engine. thats how they call it. 
+- thank you! thats very useful 

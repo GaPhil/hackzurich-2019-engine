@@ -1,0 +1,12 @@
+Through this video I would like to apply for the job of Senior Business analyst at your company.
+My name is John Edwards and I'm currently employed at AllUCanEat food delivery service as business analyst, 
+but I'm considering changing jobs.
+In my job as business analyst I work with lots of systems every day. I have working experience
+with Microsoft Office 365, I consider myself an expert in Excel. I create lots of weekly and
+monthly Excel reports for the CEO of AllUCanEat. I create my reports by using SQL server to extract tables 
+from our order database and with some Excel Macro's I integrate the data into reports for the CEO and his team.
+For planning I use Microsoft Project to ensure I deliver my work on time and within scope. 
+In my spare time im doing a Machine Learning course at Udemy, Im hoping to finish this next year.
+Furthermore I have experience with Access databases and used a lot of SQL during my time at university.
+I'm hoping you can consider me for this position. I could star as early as December 1st.
+Thanks and bye bye.

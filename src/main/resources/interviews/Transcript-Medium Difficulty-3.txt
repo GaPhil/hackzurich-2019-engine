@@ -1,0 +1,23 @@
+Interviewer: Thanks for that! Lets start with some questions about your skills, shall we?
+Candidate: Sure, what do you want to know?
+Interviewer: Your CV mentions you have experience with low level kernel development in windows. 
+As you know, we are looking for an engineer to help us with the drivers for a hardware product 
+we are developing. Mostly low level stuff but also quite a bit of higher level windows programming,
+creating installation packages, stuff like that. How comfortable are you with that kind of work?
+Candidate: Pretty confident, thats what I did for the last few years. 
+Interviewer: Can you give us some specifics?
+Candidate: My current job involves creating plug and play stack drivers for computer peripherials.
+Mice and keyboards mostly, rgb illumination, fans. My role was to create low level code that
+talks to the hardware devices, via windows kernel APIs, interrupts and ports, and exposes
+the functionalities to the rest of the operating system. 
+Candidate: Mostly Microsoft Assem
+Interviewer: I see. What technologies did you use?
+Candidate: MASM, thats Microsoft Assembler, and Microsoft C++. Visual studio. I also used 
+vmware and ida. 
+Interviewer: IDA?
+Candidate: Sorry, that's Interactive Disassembler. 
+Interviewer: Thanks, thats very useful. Our engineers here use the same toolkit. Did you 
+also participate in making installation packages and so on?
+Candidate: No, not really. I did testing, but producing windows install packages, end 
+user tools and so on wasn't my thing. My main responsibility is the low level interface 
+development work, that's my specialty. 

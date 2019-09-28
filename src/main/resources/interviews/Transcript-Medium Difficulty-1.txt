@@ -1,0 +1,27 @@
+Interviewer: Now let's talk about your more recent experience
+Candidate: [ inaudible ] 
+Interviewer: You mention you worked as a web developer for a startup, can you elaborate?
+Candidate: Basically, I was the lead dev working on a middleware we used to push 
+data between the clients and the banks. Payment processing. I 
+Interviewer: What was your role in that team?
+Candidate: Lead developer. I worked with a few colleagues, and was mostly in the lead for 
+creating designs, tests, and the CICD pipeline. 
+Interviewer: Which technologies did you use?
+Candidate: We started with a thing called Mulesoft, we ended up swapping it for a 
+serverless stack, mostly AWS. Lambdas, Dynamo, API Gateway, Cognito, SQS, S3. 
+Interviewer: So mostly AWS. Did you do any recent work on GCP or Azure?
+Candidate: [ inaudible ]
+Candidate: We did not, we evaluated Azure, that was another team. We did mostly AWS, 
+plus some on-prem stuff, but really mostly AWS. 
+Interviewer: Did you manage that team? Did they report to you directly?
+Candidate: No, we sort of didn't have reporting lines per se, you know, that was less
+formal. There were us and there were the founders, not much of reporting lines. 
+Interviewer: I see. And before that, what did you work on? Your CV says you worked 
+for a bank...
+Candidate: Yes. Fraud detection mostly. I developed software that detects card fraud. 
+Interviewer: What was your role specifically in that? 
+Candidate: I was part of the dev team. We used mostly SAS, SAS 9 to be specific. Base. 
+Interviewer: When was it?
+Candidate: I left that team 3 years ago. 
+Interviewer: Have you used SAS more recently than that?
+Candidate: Not really, no. 

@@ -1,0 +1,15 @@
+Interviewer: We need someone to help us with testing automation. 
+Candidate: You mean, like application testing? Or code testing?
+Interviewer: We have a multichannel app, it's both web and mobile. We use Selenium to automate
+some test cases. Are you familiar with it?
+Candidate: Yes, I have used Selenium. 
+Interviewer: Can you tell us a bit more?
+Candidate: I have been using Selenium for web scraping. 
+I also know Puppeteer, but I am less familiar with it. 
+Interviewer: The next question might be a bit surprising, but do you happen to know 
+visual basic.net?
+Candidate: For web testing?
+Interviewer: We have a piece of code that was written a few years ago, it combines test reports
+and generates some XLS reports. 
+Candidate: Uhm, I am not really familiar with vb.net, to be honest. It's not something I'd 
+particularly like to learn either. 

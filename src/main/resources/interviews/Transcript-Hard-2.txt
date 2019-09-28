@@ -1,0 +1,24 @@
+- On the topic of analytics, are you familiar with looker?
+- Yes. I have heard about it at google next. I think google bought them this year, didn't they?
+- Yes. We are evaluating it currently. So you don't yet have any practical experience?
+- Thats right. I am just aware it exists. 
+- And when it comes to the underlying databases, we are already using a lot of bigquery, some cloud sql, 
+and a bit of mongodb here and there. Do you have experience there?
+- Yes. I have about 3 years of bigquery, have been using it since my previous job, 
+- When was it?
+- Since 2017. I stil use it a lot. On a dail basis, really. Like it a lot. 
+- We are looking for someone to design us a automatic internal cost allocation software. Something
+to control the costs of running queries in big query. 
+- Thats a topic I am somewhat familiar with. Bigquery exposes an API that gives you costs per query, I think.
+I haven't really used it but I think that is something relatively easy for me to learn and do. 
+- OK, thats great. How about your programming skills?
+- Oh, I've been programming for the last 20 years. I think I've used just about every major programming
+language there is, honestly. 
+- [ inaudible ] we are mostly looking for someone with recent python and javascript experience. typescript of course.
+- I am using Python daily, probably not my favourite but I have at least a few years of paid experience with it. 
+- Great. The job requires numpy, pandas, seaborn 
+- Yes, of course. I am very familiar with all of those. 
+- Pytorch?
+- A bit, yes, though I would not call myself a data scientist yet. Does this job involve some machine learning?
+- Not immediately, but it would be a plus. 
+- No. I would be very interested to learn, but I haven't had a lot of experience with that yet. 
