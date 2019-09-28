@@ -18,6 +18,7 @@ Client research
 Cloudinary
 CocoaPods
 Cocos2Dx
+Cognito
 Continuous integration
 Core Data
 Crashlytics
@@ -27,6 +28,7 @@ Dart
 DevOps
 Django
 Docker
+Dynamo
 DynamoDB
 Elasticsearch
 Elixir
@@ -74,6 +76,7 @@ Kibana
 Koa
 Kotlin
 Kubernetes
+Lambdas
 Laravel
 LDAP
 Logstash
@@ -128,6 +131,8 @@ Spotify apps SDK
 Spring
 Spring Boot
 SQLite
+SQS
+S3
 Swift
 Swift 2
 Swift 3
