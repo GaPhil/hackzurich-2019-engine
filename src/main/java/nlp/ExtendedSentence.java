@@ -4,19 +4,19 @@ import com.google.cloud.language.v1.Sentence;
 
 public class ExtendedSentence {
 
-    private Sentence sentence;
+    private String sentence;
     private Party party;
     private boolean isQuestion;
 
-    public ExtendedSentence(Sentence sentence) {
+    public ExtendedSentence(String sentence) {
         this.sentence = sentence;
     }
 
-    public Sentence getSentence() {
+    public String getSentence() {
         return sentence;
     }
 
-    public void setSentence(Sentence sentence) {
+    public void setSentence(String sentence) {
         this.sentence = sentence;
     }
 

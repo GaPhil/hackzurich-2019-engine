@@ -5,11 +5,13 @@ import nlp.Party;
 import nlp.TextProcessor;
 import skill.Skill;
 import skill.SkillsService;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.*;
+import java.util.Set;
 
 public class TestRunner {
     public static void main(String[] args) {
@@ -31,12 +33,12 @@ public class TestRunner {
             // create set with skills tokens
             Set<Token> skillTokens = new HashSet<>();
             for (ExtendedSentence sentence : ext) {
-                String sent = sentence.getSentence().getText().getContent();
+                String sent = sentence.getSentence();
                 String party = sentence.getParty().toString();
                 Boolean isQuestion = sentence.isQuestion();
                 System.out.println(sent + " " + party + " QUEST: " + isQuestion);
 
-                AnnotateTextResponse annotatedSentence = textProcessor.processAll(sentence.getSentence().getText().getContent());
+                AnnotateTextResponse annotatedSentence = textProcessor.processAll(sentence.getSentence());
 
                 Token mostRecentlyAdded = null;
                 boolean doAddNextToken = true;
@@ -50,16 +52,15 @@ public class TestRunner {
                     for (Skill skill : skills) {
                         int score = FuzzySearch.ratio(token.getText().getContent().toLowerCase(), skill.getName().toLowerCase());
                         if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase()) || score > 90) {
-                            System.out.println(token);
+                            skillTokens.add(token);
                         }
                     }
 
                     if (doAddNextToken && token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
                         System.out.println("will remove token: " + mostRecentlyAdded); // TODO we should remove token
                     }
-
-                    doAddNextToken = true;
                 }
+
 
 //                // evaluate semantic graph and remove negated tokens
 //                for (Token token : annotatedSentence.getTokensList()) {
@@ -105,10 +106,12 @@ public class TestRunner {
             String text = s.getText().getContent().toLowerCase();
 
             Party party;
-            if (explicitParty && text.startsWith("candidate")) {
+            if (explicitParty && text.startsWith("candidate:")) {
+                text = text.replaceFirst("candidate: ", "");
                 lastParty = Party.CANDIDATE;
                 party = Party.CANDIDATE;
-            } else if (explicitParty && text.startsWith("interviewer")) {
+            } else if (explicitParty && text.startsWith("interviewer:")) {
+                text = text.replaceFirst("interviewer: ", "");
                 lastParty = Party.INTERVIEWER;
                 party = Party.INTERVIEWER;
             } else if (explicitParty) {
@@ -116,8 +119,7 @@ public class TestRunner {
             } else {
                 party = Party.UNKNOWN;
             }
-
-            ExtendedSentence ext = new ExtendedSentence(s);
+            ExtendedSentence ext = new ExtendedSentence(text);
             ext.setParty(party);
             ext.setQuestion(text.endsWith("?"));
             extendedSentences.add(ext);
