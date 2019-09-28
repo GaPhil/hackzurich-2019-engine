@@ -8,10 +8,7 @@ import skill.SkillsService;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TestRunner {
     public static void main(String[] args) {
@@ -26,56 +23,43 @@ public class TestRunner {
             AnalyzeSyntaxResponse res = textProcessor.processSyntax(text);
 
             List<Sentence> sentences = res.getSentencesList();
+            List<ExtendedSentence> extendedSentences = toExtendedSentences(sentences, true);
 
-            List<ExtendedSentence> ext = toExtendedSentences(sentences, true);
+            List<Token> conversationContext = new ArrayList<>();
+            List<Token> approvedSkillTokens = new ArrayList<>();
 
+            for (ExtendedSentence sentence : extendedSentences) {
+                // progress indicator
+                System.out.print(".");
 
-            // create set with skills tokens
-            Set<Token> skillTokens = new HashSet<>();
-            for (ExtendedSentence sentence : ext) {
-                String sent = sentence.getSentence();
-                String party = sentence.getParty().toString();
-                Boolean isQuestion = sentence.isQuestion();
-                System.out.println(sent + " " + party + " QUEST: " + isQuestion);
-
+                // run NLP on sentence
                 AnnotateTextResponse annotatedSentence = textProcessor.processAll(sentence.getSentence());
 
-                Token mostRecentlyAdded = null;
-                boolean doAddNextToken = true;
-                for (Token token : annotatedSentence.getTokensList()) {
+                // get all tokens which are whitelisted skills
+                List<Token> skillTokens = filterSkillTokens(annotatedSentence.getTokensList(), skills);
 
-                    if (token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
-                        System.out.println("will not add token: " + token); // TODO should not add token
-                        doAddNextToken = false;
-                    }
-
-                    for (Skill skill : skills) {
-                        int score = FuzzySearch.ratio(token.getText().getContent().toLowerCase(), skill.getName().toLowerCase());
-                        if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase()) || score > 90) {
-                            skillTokens.add(token);
-                        }
-                    }
-
-                    if (doAddNextToken && token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
-                        System.out.println("will remove token: " + mostRecentlyAdded); // TODO we should remove token
-                    }
+                // if skills introduced by interviewer or in candidate question then add to context
+                if (sentence.isQuestion() || sentence.isInterviewer()) {
+                    conversationContext.addAll(skillTokens);
+                    continue;
                 }
 
+                // check if answer contains negations
+                boolean hasNegations = sentenceHasNegations(annotatedSentence);
 
-//                // evaluate semantic graph and remove negated tokens
-//                for (Token token : annotatedSentence.getTokensList()) {
-//                    if (token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
-//                        System.out.println("token: " + mostRecentlyAdded);
-//
-//                    }
-//                }
+                // select either current tokens or from conversation context
+                if (!hasNegations && !skills.isEmpty()) {
+                    approvedSkillTokens.addAll(skillTokens);
+                } else if (!hasNegations && !conversationContext.isEmpty()) {
+                    approvedSkillTokens.addAll(conversationContext);
+                }
 
-                System.out.println("---------------------------------------------------------------------------");
+                conversationContext.clear();
             }
 
-            System.out.println("here come all the tokens");
-            for (Token tok : skillTokens) {
-                System.out.println(tok.getText().getContent());
+            System.out.println("\n\nDetected tokens:");
+            for (String tok : dedupeList(approvedSkillTokens)) {
+                System.out.println(tok);
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -83,18 +67,41 @@ public class TestRunner {
 
     }
 
-    static private void crawlSemanticGraph(Token token, List<Token> tokens) {
-        if (token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.ROOT)) {
-            System.out.print(token.getText().getContent() + "(" + token.getDependencyEdge().getLabel() + ")\n\n");
-            return;
+    static private List<Token> filterSkillTokens(List<Token> tokens, List<Skill> skills) {
+        List<Token> skillTokens = new ArrayList<>();
+
+        for (Token token : tokens) {
+            for (Skill skill : skills) {
+                int score = FuzzySearch.ratio(token.getText().getContent().toLowerCase(), skill.getName().toLowerCase());
+                if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase()) || score > 90) {
+                    skillTokens.add(token);
+                }
+            }
         }
 
-        if (token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
-            System.out.println(">>>>> Removed token ");
+        return skillTokens;
+    }
+
+    static private Set<String> dedupeList(List<Token> tokens) {
+        Set<String> tokensSet = new HashSet<>();
+
+        for (Token token : tokens) {
+            String tokenName = token.getText().getContent();
+            tokensSet.add(tokenName.trim().replaceAll("[^a-zA-Z0-9 ]", ""));
         }
 
-        System.out.print(token.getText().getContent() + "(" + token.getDependencyEdge().getLabel() + ")" + " -> ");
-        crawlSemanticGraph(tokens.get(token.getDependencyEdge().getHeadTokenIndex()), tokens);
+        return tokensSet;
+    }
+
+    static private boolean sentenceHasNegations(AnnotateTextResponse annotatedSentence) {
+        boolean hasNegations = false;
+        for (Token token : annotatedSentence.getTokensList()) {
+           if (token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
+               hasNegations = true;
+           }
+        }
+
+        return hasNegations;
     }
 
     static private List<ExtendedSentence> toExtendedSentences(List<Sentence> sentences, boolean explicitParty) {
