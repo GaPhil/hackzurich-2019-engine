@@ -1,4 +1,4 @@
-Interviewer: Do you have experience with web programming
+Interviewer: Do you have experience with web programming.
 Candidate: What do you mean, specifically? Like, HTML?
 Interviewer: We are using Angular 2, primarily.
 Candidate: Yeah, I am familiar with that.

@@ -30,4 +30,46 @@ public class TextProcessor {
             return null;
         }
     }
+
+    public AnalyzeSyntaxResponse processSyntax(String text) {
+        try {
+            Document doc = Document.newBuilder()
+                    .setContent(text)
+                    .setType(Document.Type.PLAIN_TEXT)
+                    .build();
+
+            LanguageServiceClient language = LanguageServiceClient.create();
+
+            AnalyzeSyntaxRequest request = AnalyzeSyntaxRequest.newBuilder()
+                    .setDocument(doc)
+                    .setEncodingType(EncodingType.UTF16)
+                    .build();
+
+            return language.analyzeSyntax(request);
+        } catch (IOException e) {
+            LOG.warning(e.getMessage());
+            return null;
+        }
+    }
+
+    public AnnotateTextResponse processAll(String text) {
+        try {
+            Document doc = Document.newBuilder()
+                    .setContent(text)
+                    .setType(Document.Type.PLAIN_TEXT)
+                    .build();
+
+            LanguageServiceClient language = LanguageServiceClient.create();
+
+            AnnotateTextRequest request = AnnotateTextRequest.newBuilder()
+                    .setDocument(doc)
+                    .setEncodingType(EncodingType.UTF16)
+                    .build();
+
+            return language.annotateText(request);
+        } catch (IOException e) {
+            LOG.warning(e.getMessage());
+            return null;
+        }
+    }
 }
