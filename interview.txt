@@ -1,27 +1,23 @@
-Interviewer: Now let's talk about your more recent experience
-Candidate: [ inaudible ]
-Interviewer: You mention you worked as a web developer for a startup, can you elaborate?
-Candidate: Basically, I was the lead dev working on a middleware we used to push
-data between the clients and the banks. Payment processing. I
-Interviewer: What was your role in that team?
-Candidate: Lead developer. I worked with a few colleagues, and was mostly in the lead for
-creating designs, tests, and the CICD pipeline.
-Interviewer: Which technologies did you use?
-Candidate: We started with a thing called Mulesoft, we ended up swapping it for a
-serverless stack, mostly AWS. Lambdas, Dynamo, API Gateway, Cognito, SQS, S3.
-Interviewer: So mostly AWS. Did you do any recent work on GCP or Azure?
-Candidate: [ inaudible ]
-Candidate: We did not, we evaluated Azure, that was another team. We did mostly AWS,
-plus some on-prem stuff, but really mostly AWS.
-Interviewer: Did you manage that team? Did they report to you directly?
-Candidate: No, we sort of didn't have reporting lines per se, you know, that was less
-formal. There were us and there were the founders, not much of reporting lines.
-Interviewer: I see. And before that, what did you work on? Your CV says you worked
-for a bank...
-Candidate: Yes. Fraud detection mostly. I developed software that detects card fraud.
-Interviewer: What was your role specifically in that?
-Candidate: I was part of the dev team. We used mostly SAS, SAS 9 to be specific. Base.
-Interviewer: When was it?
-Candidate: I left that team 3 years ago.
-Interviewer: Have you used SAS more recently than that?
-Candidate: Not really, no.
+Interviewer: Please tell us more about your recent experiences.
+Candidate: I am a full stack java developer. So basically I can do anything from front end stuff,
+to backend, including databases, cicd, stuff like that.
+Interviewer: The job requires some of that, but the backend is based on nodejs. Is that a problem?
+Candidate: No, that's actually the direction I was developing myself over the last 2 years.
+Interviewer: Specifically, what did you use it for? Your last job, at the logistics company, it says
+here you worked primarily on java-based backend, and an oracle database, exadata, is that right?
+nodejs.
+Candidate: It's correct, but I contribute towards open source in my spare time, and thats mostly nodejs.
+Interviewer: Thats interesting, which project do you contribute for?
+Candidate: Wey. It's a bit like Slack, just open source. Early stages, I'd say.
+Interviewer: And about databases? We are getting rid of Oracle, slowly but surely, and are more interested
+in someone with redshift and athena.
+Candidate: No, I haven't really worked with either yet. I am familiar with Mongo, MySql and Postgres though.
+Interviewer: When did you use those? We use those as well, here and there.
+Candidate: I use mongo all the time for my personal projects. I used MySQL and Progres on my previous job.
+Interviewer: When was that?
+Candidate: 2015.
+Interviewer: Would you consider yourself proficient with it? I have to warn you, our legacy stack is a bit
+complex and we are looking for someone with exprience.
+Candidate: I'd not call myself super experienced but I think I am fairly profficient. I've been using it for
+a few years, and honestly, I think when it comes to SQL I am quite good. It is not that different between
+Oracle and MySQL, really.
