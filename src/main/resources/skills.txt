@@ -4,7 +4,6 @@ AngularJS
 Azure
 Backend development
 BigQuery
-C
 C#
 C++
 Calabash
