@@ -29,7 +29,7 @@ public class Main {
             Set<String> entities = new HashSet<>();
             for (Entity entity : res.getEntitiesList()) {
                 for (Skill skill : skills) {
-                    if (entity.getName().toLowerCase().contains(skill.getValue().toLowerCase())) {
+                    if (entity.getName().toLowerCase().contains(skill.getName().toLowerCase())) {
                         entities.add(entity.getName().toLowerCase());
                     }
                 }

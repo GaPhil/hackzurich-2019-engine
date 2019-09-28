@@ -1,17 +1,17 @@
 package skill;
 
 public class Skill {
-    private String value;
+    private String name;
 
     public Skill(String value) {
-        this.value = value;
+        this.name = value;
     }
 
-    public String getValue() {
-        return value;
+    public String getName() {
+        return name;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setName(String name) {
+        this.name = name;
     }
 }
