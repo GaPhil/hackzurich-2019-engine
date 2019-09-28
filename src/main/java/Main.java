@@ -17,7 +17,7 @@ import static spark.Spark.post;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SkillsService skillsService = new SkillsService();
         List<Skill> skills = skillsService.loadSkills();
 
