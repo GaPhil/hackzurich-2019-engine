@@ -1,5 +1,7 @@
 # Interview Transcript Analysis - Engine
 
+[![Actions Status](https://github.com/GaPhil/hackzurich-2019-engine/workflows/Lint/badge.svg)](https://github.com/GaPhil/hackzurich-2019-engine/actions)
+
 Submission project for HackZürich 2019.
 
 Team members: [Phillip Gajland](https://github.com/GaPhil) and [Simone Stefani](https://github.com/SimoneStefani)
