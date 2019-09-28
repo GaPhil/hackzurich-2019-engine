@@ -6,6 +6,8 @@ import nlp.TextProcessor;
 import skill.Skill;
 import skill.SkillsService;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,17 +35,29 @@ public class TextAnalyzer {
             // run NLP on sentence
             AnnotateTextResponse annotatedSentence = textProcessor.processAll(sentence.getSentence());
 
-            // get all tokens which are whitelisted skills
-            List<Token> skillTokens = filterSkillTokens(annotatedSentence.getTokensList(), skills);
+            List<Token> skillTokens = new ArrayList<>();
+            boolean hasNegations = false;
+
+            for (Token token : annotatedSentence.getTokensList()) {
+                // get all tokens which are whitelisted skills
+                for (Skill skill : skills) {
+                    int score = FuzzySearch.ratio(token.getText().getContent().toLowerCase(), skill.getName().toLowerCase());
+                    if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase()) || score > 90) {
+                        skillTokens.add(token);
+                    }
+                }
+
+                // check if answer contains negations
+                if (token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
+                    hasNegations = true;
+                }
+            }
 
             // if skills introduced by interviewer or in candidate question then add to context
             if (sentence.isQuestion() || sentence.isInterviewer()) {
                 conversationContext.addAll(skillTokens);
                 continue;
             }
-
-            // check if answer contains negations
-            boolean hasNegations = sentenceHasNegations(annotatedSentence);
 
             // select either current tokens or from conversation context
             if (!hasNegations && !skills.isEmpty()) {
@@ -60,21 +74,6 @@ public class TextAnalyzer {
 
     }
 
-    static private List<Token> filterSkillTokens(List<Token> tokens, List<Skill> skills) {
-        List<Token> skillTokens = new ArrayList<>();
-
-        for (Token token : tokens) {
-            for (Skill skill : skills) {
-                int score = FuzzySearch.ratio(token.getText().getContent().toLowerCase(), skill.getName().toLowerCase());
-                if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase()) || score > 90) {
-                    skillTokens.add(token);
-                }
-            }
-        }
-
-        return skillTokens;
-    }
-
     static Set<String> dedupeList(List<Token> tokens) {
         Set<String> tokensSet = new HashSet<>();
 
@@ -84,17 +83,6 @@ public class TextAnalyzer {
         }
 
         return tokensSet;
-    }
-
-    static private boolean sentenceHasNegations(AnnotateTextResponse annotatedSentence) {
-        boolean hasNegations = false;
-        for (Token token : annotatedSentence.getTokensList()) {
-            if (token.getDependencyEdge().getLabel().equals(DependencyEdge.Label.NEG)) {
-                hasNegations = true;
-            }
-        }
-
-        return hasNegations;
     }
 
     static private List<ExtendedSentence> toExtendedSentences(List<Sentence> sentences, boolean explicitParty) {
