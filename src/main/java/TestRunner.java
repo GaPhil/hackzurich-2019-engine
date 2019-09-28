@@ -1,4 +1,8 @@
-import com.google.cloud.language.v1.*;
+import com.google.cloud.language.v1.AnalyzeSyntaxResponse;
+import com.google.cloud.language.v1.AnnotateTextResponse;
+import com.google.cloud.language.v1.Sentence;
+import com.google.cloud.language.v1.Token;
+import me.xdrop.fuzzywuzzy.FuzzySearch;
 import nlp.ExtendedSentence;
 import nlp.Party;
 import nlp.TextProcessor;
@@ -8,9 +12,7 @@ import skill.SkillsService;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class TestRunner {
     public static void main(String[] args) {
@@ -38,7 +40,8 @@ public class TestRunner {
 
                 for (Token token : foo.getTokensList()) {
                     for (Skill skill : skills) {
-                        if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase())) {
+                        int score = FuzzySearch.ratio(token.getText().getContent().toLowerCase(), skill.getName().toLowerCase());
+                        if (token.getText().getContent().toLowerCase().contains(skill.getName().toLowerCase()) || score > 90) {
                             System.out.println(token);
                         }
                     }
