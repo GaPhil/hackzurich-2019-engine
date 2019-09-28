@@ -18,14 +18,12 @@ import static spark.Spark.post;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        post("/api/analyze", (request, response) -> new Skill("Hello World"), new JsonTransformer());
-
         SkillsService skillsService = new SkillsService();
         List<Skill> skills = skillsService.loadSkills();
 
-        get("/skills", (request, response) -> skills, new JsonTransformer());
+        get("/api/skills", (request, response) -> skills, new JsonTransformer());
 
-        post("/analyse", (request, response) -> {
+        post("/api/analyse", (request, response) -> {
             TextProcessor textProcessor = new TextProcessor();
             AnalyzeEntitiesResponse res = textProcessor.processEntities(request.body());
             Set<String> entities = new HashSet<>();
