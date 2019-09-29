@@ -54,6 +54,7 @@ public class TextAnalyzer {
 
             // if skills introduced by interviewer or in candidate question then add to context
             if (sentence.isQuestion() || sentence.isInterviewer()) {
+                if (!skillTokens.isEmpty()) conversationContext.clear();
                 conversationContext.addAll(skillTokens);
                 continue;
             }

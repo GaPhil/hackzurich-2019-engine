@@ -2,6 +2,7 @@ Amazon AWS
 AWS
 Android
 AngularJS
+Angular
 APIs
 API
 Athena
