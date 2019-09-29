@@ -4,6 +4,7 @@
 
 import com.google.cloud.language.v1.AnalyzeEntitiesResponse;
 import com.google.cloud.language.v1.Entity;
+import com.google.cloud.language.v1.Token;
 import nlp.TextProcessor;
 import skill.Skill;
 import skill.SkillsService;
@@ -25,17 +26,8 @@ public class Main {
         get("/api/skills", (request, response) -> skills, new JsonTransformer());
 
         post("/api/analyse", (request, response) -> {
-            TextProcessor textProcessor = new TextProcessor();
-            AnalyzeEntitiesResponse res = textProcessor.processEntities(request.body());
-            Set<String> entities = new HashSet<>();
-            for (Entity entity : res.getEntitiesList()) {
-                for (Skill skill : skills) {
-                    if (entity.getName().toLowerCase().contains(skill.getName().toLowerCase())) {
-                        entities.add(entity.getName().toLowerCase());
-                    }
-                }
-            }
-            return entities;
+            List<Token> approvedSkillTokens = TextAnalyzer.analyze(request.body());
+            return TextAnalyzer.dedupeList(approvedSkillTokens);
         }, new JsonTransformer());
     }
 

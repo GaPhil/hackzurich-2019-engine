@@ -35,4 +35,12 @@ public class ExtendedSentence {
     public void setQuestion(boolean question) {
         isQuestion = question;
     }
+
+    public boolean isInterviewer() {
+        return this.party.equals(Party.INTERVIEWER);
+    }
+
+    public boolean isCandidate() {
+        return this.party.equals(Party.CANDIDATE);
+    }
 }
