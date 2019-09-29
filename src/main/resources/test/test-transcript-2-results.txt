@@ -1,0 +1,12 @@
+Desired output:
+
+x86 assembly language, 1996
+C, 2018
+C++, 2019
+Javascript
+Python
+Typescript
+MySQL, 2016
+Postgres, 2013
+Bigquery, 2016
+Redshift

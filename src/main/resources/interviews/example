@@ -1,0 +1,13 @@
+Interviewer: You mentioned you have experience with scripting languages. Can you
+tell us a bit more about your experience with Python?
+Candidate: I have used Python for years now. Primarily for ad-hoc scripting, nothing too
+major, not large, monolithic applications.
+Interviewer: That's great. Are you familiar with the microservice design patterns?
+Candidate: Yes, I have a little experience. In my previous jobs we were using Oracle's
+Kubernetes Engine.
+Interviewer: Thanks. That's what we are using here as well. And how about Azure?
+Candidate: I haven't used it, no. Unless office365 counts, I've used that a lot in my last job.
+Interviewer: And how about AWS Lambda?
+Candidate: I'd really like to learn it. Haven't used it yet.
+Interviewer: And GCP Cloud Functions?
+Candidate: I am sorry, no, I don't have much experience with GCP either.

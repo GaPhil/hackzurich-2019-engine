@@ -1,0 +1,15 @@
+Interviewer: How experienced are you with relational databases?
+Candidate: I know MySQL fairly well. I use it a lot. 
+Interviewer: Any other engines?
+Candidate: Yes, I also use Postgres. I am quite familiar with bigquery too. That's actually my favourite at the moment. 
+Interviewer: That's good to know. Do you have recent experience with it? It's evolving fairly rapidly...
+Candidate: I used it in the morning, before coming to this interview. Yeah, I'd say I have fairly recent experience! [ laughs ] 
+Interviewer: Great, great. How about programming languages?
+Candidate: Mainly Python, I use it all the time. Javascript, from time to time, too. 
+Interviewer: Recently?
+Candidate: Yes, I use it at the moment. 
+Interviewer: Thanks, thats very good. Last question, do you know nodejs?
+Candidate: Yes, sure. I have used it at my previous job, at the hosting company. 
+Interviewer: When was it?
+Candidate: 2017. 
+Interviewer: Thank you!

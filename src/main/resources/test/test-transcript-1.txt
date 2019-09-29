@@ -1,0 +1,36 @@
+Interviewer: So, can you tell us a bit about your recent work for AWS?
+Candidate: I actually did not work for AWS, I worked for a company AWS contracted.
+I was a senior developer, in charge for developing software running on 
+the serverless stack. 
+Interviewer: Can you tell us a bit more about the technologies you used? 
+Candidate: Yes, sure. Primarily, I worked with cloud functions, you know, lambdas. 
+Interviewer: Did you also do some work on their databases, like Redshift or Aurora?
+Candidate: Yeah, I did work with Redshift. 
+Interviewer: Aurora?
+Candidate: Nah, we did not do much of that in my team. Mostly redshift and dynamodb. 
+Interviewer: Dynamodb?
+Candidate: Yeah, this is a key-value store database. We used a lot of that in conjunction
+with SQS. 
+Interviewer: I see. When was the last time you used those skills?
+Candidate: I am using them now, that's still my current job. 
+Interviewer: Ah, got it, sorry, I should have seen that in your CV, sorry! Ok, one more 
+question - did you work with GCP?
+Candidate: We were an AWS-only shop, so no. 
+Interviewer: So no bigquery expertise?
+Candidate: Does non-professional expertise matter?
+Interviewer: Yes, sure. 
+Candidate: Then yes, I used bigquery when I was studying. 
+Interviewer: When was the last time you used it?
+Candidate: 2017. I know it has improved since then, but haven't used it since really. 
+Interviewer: Thank you, that would be all. 
+
+
+
+
+
+
+
+
+
+
+

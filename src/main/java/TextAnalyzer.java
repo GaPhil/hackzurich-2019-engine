@@ -131,6 +131,7 @@ public class TextAnalyzer {
         else if (sentence.contains("very little")) confidence = confidence - 0.8;
         else if (sentence.contains("a lot")) confidence = confidence + 0.7;
         else if (sentence.contains("very much")) confidence = confidence + 0.8;
+        else if (sentence.contains("for years")) confidence = confidence + 1;
         else if (sentence.contains("more")) confidence = confidence + 0.2;
         else if (sentence.contains("much")) confidence = confidence + 0.2;
 

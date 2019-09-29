@@ -1,0 +1,20 @@
+Interviewer: Can you tell me something about your experience with low level coding?
+Candidate: Yes, I am familiar with x86 assembly language. 
+Interviewer: Oh, thats nice. When was the last time you used it?
+Candidate: 1996. 
+Interviewer: Oh. 
+Candidate: Well, these days I mostly use C and C++. 
+Interviewer: Good to know, that's what we use around here as well. How recent is your experience?
+Candidate: Fairly recent. This year I have been using mainly C++. I've used C last year. 
+Interviewer: Thanks. How about scripting languages? Python, javascript? 
+Candidate: I know Python and typescript, so you can say I know all of them. 
+Interviewer: Javascript too?
+Candidate: Yes, same thing, really, as typescript. Not that different. 
+Interviewer: Ok. I will note you know all three. Last question, which databases are you
+familiar with?
+Candidate: You mean database engines?
+Interviewer: Yes. 
+Candidate: Well, I worked with MySQL, Postgres. I also worked with Redshift and Bigquery. 
+Interviewer: Recently?
+Candidate: No, my current job does not require that. I used MySQL and Bigquery in 2016. 
+I don't rememeber when I used Postgres the last time. I think it must have been in 2013.

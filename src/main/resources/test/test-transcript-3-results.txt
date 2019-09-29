@@ -1,0 +1,8 @@
+Desired output:
+
+MySQL
+Postgres
+BigQuery, 2019
+Python, 2019
+Javascript, 2019
+NodeJS, 2017

@@ -1,0 +1,8 @@
+Desired output:
+
+AWS, 2019 
+Lambda functions, 2019
+Redshift, 2019
+Dynamodb, 2019
+SQS, 2019
+BigQuery, 2017
