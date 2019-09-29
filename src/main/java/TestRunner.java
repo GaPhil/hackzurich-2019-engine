@@ -2,7 +2,6 @@ import skill.Skill;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +15,7 @@ public class TestRunner {
 
             System.out.println("\n\nDetected tokens:");
             for (Map.Entry<String, Double> entry : TextAnalyzer.dedupeList(approvedSkillTokens).entrySet()) {
-                System.out.println("key: " +  entry.getKey() + " - " + "value: " + entry.getValue());
+                System.out.println("key: " + entry.getKey() + " - " + "value: " + entry.getValue());
             }
         } catch (Exception e) {
             System.out.println(e);

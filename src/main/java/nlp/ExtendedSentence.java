@@ -1,7 +1,5 @@
 package nlp;
 
-import com.google.cloud.language.v1.Sentence;
-
 public class ExtendedSentence {
 
     private String sentence;

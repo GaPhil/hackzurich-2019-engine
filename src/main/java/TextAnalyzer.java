@@ -6,9 +6,9 @@ import nlp.TextProcessor;
 import skill.Skill;
 import skill.SkillsService;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class TextAnalyzer {
     public static List<Skill> analyze(String text) {
@@ -128,7 +128,8 @@ public class TextAnalyzer {
         if (sentence.contains("a bit")) confidence = confidence - 0.3;
         else if (sentence.contains("a little")) confidence = confidence - 0.5;
         else if (sentence.contains("less")) confidence = confidence - 0.2;
-        else if (sentence.contains("very little")) confidence = confidence - 0.8;
+        else if (sentence.contains("very little"))
+            confidence = confidence - 0.8;
         else if (sentence.contains("a lot")) confidence = confidence + 0.7;
         else if (sentence.contains("very much")) confidence = confidence + 0.8;
         else if (sentence.contains("more")) confidence = confidence + 0.2;

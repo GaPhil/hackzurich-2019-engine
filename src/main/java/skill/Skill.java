@@ -1,7 +1,6 @@
 package skill;
 
 import com.google.cloud.language.v1.Token;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
