@@ -1,23 +1,13 @@
-Interviewer: Please tell us more about your recent experiences.
-Candidate: I am a full stack java developer. So basically I can do anything from front end stuff,
-to backend, including databases, cicd, stuff like that.
-Interviewer: The job requires some of that, but the backend is based on nodejs. Is that a problem?
-Candidate: No, that's actually the direction I was developing myself over the last 2 years.
-Interviewer: Specifically, what did you use it for? Your last job, at the logistics company, it says
-here you worked primarily on java-based backend, and an oracle database, exadata, is that right?
-nodejs.
-Candidate: It's correct, but I contribute towards open source in my spare time, and thats mostly nodejs.
-Interviewer: Thats interesting, which project do you contribute for?
-Candidate: Wey. It's a bit like Slack, just open source. Early stages, I'd say.
-Interviewer: And about databases? We are getting rid of Oracle, slowly but surely, and are more interested
-in someone with redshift and athena.
-Candidate: No, I haven't really worked with either yet. I am familiar with Mongo, MySql and Postgres though.
-Interviewer: When did you use those? We use those as well, here and there.
-Candidate: I use mongo all the time for my personal projects. I used MySQL and Progres on my previous job.
-Interviewer: When was that?
-Candidate: 2015.
-Interviewer: Would you consider yourself proficient with it? I have to warn you, our legacy stack is a bit
-complex and we are looking for someone with exprience.
-Candidate: I'd not call myself super experienced but I think I am fairly profficient. I've been using it for
-a few years, and honestly, I think when it comes to SQL I am quite good. It is not that different between
-Oracle and MySQL, really.
+Interviewer: Do you have experience with web programming.
+Candidate: What do you mean, specifically? Like, HTML?
+Interviewer: We are using Angular 2, primarily.
+Candidate: Yeah, I am familiar with that.
+Interviewer: Great. When was the last time you used that?
+Candidate: I am using it currently. I am a senior developer in a project that is building
+an app build on AngularJS, node, mongo. I am pretty profficient with those things.
+Interviewer: How about databases?
+Candidate: I've mentioned mongo. MongoDB. I am using it on my current project.
+Interviewer: And how about relational ones?
+Candidate: MySQL and Postgres. And a bit of Oracle.
+Interviewer: How many years of experience do you have?
+Candidate: 4 years with Mongo. 10 years with MySQL and Postgres. I haven't used Oracle in a while.

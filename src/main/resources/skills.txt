@@ -2,6 +2,8 @@ Amazon AWS
 AWS
 Android
 AngularJS
+APIs
+API
 Athena
 Azure
 Backend development
@@ -72,6 +74,7 @@ Jira
 jQuery
 JUnit
 Kafka
+Kernel
 Kibana
 Koa
 Kotlin
@@ -110,6 +113,7 @@ Postgre
 Project management
 Prolog
 Prometheus
+Puppeteer
 Pytest
 Python
 Qlik
@@ -147,9 +151,11 @@ Unity
 UX design
 VFR/Reader
 Visual design
+Vmware
 Vue.js
 Vuex
 WebSockets
+Windows
 WordPress
 Xamarin
 Xcode

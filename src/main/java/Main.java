@@ -1,17 +1,7 @@
-/**
- * Created by GaPhil on 2019-09-27.
- */
-
-import com.google.cloud.language.v1.AnalyzeEntitiesResponse;
-import com.google.cloud.language.v1.Entity;
-import com.google.cloud.language.v1.Token;
-import nlp.TextProcessor;
 import skill.Skill;
 import skill.SkillsService;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static spark.Spark.*;
 
@@ -26,7 +16,7 @@ public class Main {
         get("/api/skills", (request, response) -> skills, new JsonTransformer());
 
         post("/api/analyse", (request, response) -> {
-            List<Token> approvedSkillTokens = TextAnalyzer.analyze(request.body());
+            List<Skill> approvedSkillTokens = TextAnalyzer.analyze(request.body());
             return TextAnalyzer.dedupeList(approvedSkillTokens);
         }, new JsonTransformer());
     }

@@ -68,7 +68,7 @@ public class TextProcessor {
             LanguageServiceClient language = LanguageServiceClient.create();
 
             AnnotateTextRequest request = AnnotateTextRequest.newBuilder()
-                    .setFeatures(AnnotateTextRequest.Features.newBuilder().setExtractEntities(true).setExtractSyntax(true).build())
+                    .setFeatures(AnnotateTextRequest.Features.newBuilder().setExtractEntities(true).setExtractSyntax(true).setExtractDocumentSentiment(true).build())
                     .setDocument(doc)
                     .setEncodingType(EncodingType.UTF16)
                     .build();

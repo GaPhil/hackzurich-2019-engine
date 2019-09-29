@@ -8,13 +8,10 @@ import skill.SkillsService;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TextAnalyzer {
-    public static List<Token> analyze(String text) {
+    public static List<Skill> analyze(String text) {
 
         SkillsService skillsService = new SkillsService();
         List<Skill> skills = skillsService.loadSkills();
@@ -26,7 +23,7 @@ public class TextAnalyzer {
         List<ExtendedSentence> extendedSentences = toExtendedSentences(sentences, true);
 
         List<Token> conversationContext = new ArrayList<>();
-        List<Token> approvedSkillTokens = new ArrayList<>();
+        List<Skill> approvedSkills = new ArrayList<>();
 
         for (ExtendedSentence sentence : extendedSentences) {
             // progress indicator
@@ -37,6 +34,8 @@ public class TextAnalyzer {
 
             List<Token> skillTokens = new ArrayList<>();
             boolean hasNegations = false;
+
+            double confidence = getSentenceConfidence(sentence.getSentence());
 
             for (Token token : annotatedSentence.getTokensList()) {
                 // get all tokens which are whitelisted skills
@@ -60,29 +59,35 @@ public class TextAnalyzer {
             }
 
             // select either current tokens or from conversation context
-            if (!hasNegations && !skills.isEmpty()) {
-                approvedSkillTokens.addAll(skillTokens);
+            if (!hasNegations && !skillTokens.isEmpty()) {
+                for (Token tk : skillTokens) {
+                    approvedSkills.add(new Skill(tk, confidence));
+                }
             } else if (!hasNegations && !conversationContext.isEmpty()) {
-                approvedSkillTokens.addAll(conversationContext);
+                for (Token tk : conversationContext) {
+                    approvedSkills.add(new Skill(tk, confidence));
+                }
             }
 
             conversationContext.clear();
         }
 
-        return approvedSkillTokens;
-
-
+        return approvedSkills;
     }
 
-    static Set<String> dedupeList(List<Token> tokens) {
-        Set<String> tokensSet = new HashSet<>();
+    static HashMap<String, Double> dedupeList(List<Skill> skills) {
+        HashMap<String, Double> skillSet = new HashMap<>();
 
-        for (Token token : tokens) {
-            String tokenName = token.getText().getContent();
-            tokensSet.add(tokenName.trim().replaceAll("[^a-zA-Z0-9 ]", ""));
+        for (Skill skill : skills) {
+            String normalizedSkillName = skill.getName().trim().replaceAll("[^a-zA-Z0-9+]", "");
+            if (skillSet.containsKey(normalizedSkillName)) {
+                skillSet.replace(normalizedSkillName, skill.getValue() * skillSet.get(normalizedSkillName));
+            } else {
+                skillSet.put(normalizedSkillName, skill.getValue());
+            }
         }
 
-        return tokensSet;
+        return skillSet;
     }
 
     static private List<ExtendedSentence> toExtendedSentences(List<Sentence> sentences, boolean explicitParty) {
@@ -116,5 +121,18 @@ public class TextAnalyzer {
         return extendedSentences;
     }
 
+    static private double getSentenceConfidence(String sentence) {
+        double confidence = 1;
 
+        // extensible list of modifiers
+        if (sentence.contains("a bit")) confidence = confidence - 0.3;
+        else if (sentence.contains("a little")) confidence = confidence - 0.5;
+        else if (sentence.contains("less")) confidence = confidence - 0.2;
+        else if (sentence.contains("very little")) confidence = confidence - 0.8;
+        else if (sentence.contains("a lot")) confidence = confidence + 0.7;
+        else if (sentence.contains("very much")) confidence = confidence + 0.8;
+        else if (sentence.contains("more")) confidence = confidence + 0.2;
+
+        return confidence;
+    }
 }
